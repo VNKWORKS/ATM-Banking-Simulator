@@ -52,6 +52,18 @@ New features will be added step by step.
 
 ---
 
+## Features
+
+- Check Balance
+- Deposit Money
+- Withdraw Money
+- Persistent Balance using JSON
+- Exchange Rate API Integration
+- Exception Handling
+- Input Validation
+
+---
+
 ## 👨‍💻 Author
 
 **Naveen Kumar V**

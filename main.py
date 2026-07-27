@@ -8,7 +8,7 @@ def main():
 
         show_menu()
 
-        choice = input("Enter your choice (1-5): ")
+        choice = input("Enter your choice (1-6): ")
 
         if choice == "1":
             check_balance()
@@ -25,6 +25,9 @@ def main():
         
         elif choice == "5":
             exchange_rate()
+            
+        elif choice == "6":
+            show_transactions()
 
         else:
             print("Invalid Choice!")

@@ -1,3 +1,15 @@
 {
-    "balance": 1300.0
+    "balance": 1600.0,
+    "transactions": [
+        {
+            "type": "Deposit",
+            "amount": 500.0,
+            "time": "27-07-2026 22:57:36"
+        },
+        {
+            "type": "Withdraw",
+            "amount": 200.0,
+            "time": "27-07-2026 22:58:24"
+        }
+    ]
 }

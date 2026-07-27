@@ -1,3 +1,4 @@
+from datetime import datetime
 import requests
 import json
 
@@ -13,6 +14,19 @@ def save_data(data):
     with open(FILE_NAME, "w") as file:
         json.dump(data, file, indent=4)
 
+def add_transaction(transaction_type, amount):
+
+    data = load_data()
+
+    transaction = {
+        "type": transaction_type,
+        "amount": amount,
+        "time": datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    }
+
+    data["transactions"].append(transaction)
+
+    save_data(data)
 
 def show_menu():
     print("\n" + "=" * 40)
@@ -23,6 +37,7 @@ def show_menu():
     print("3. Withdraw Money")
     print("4. Exit")
     print("5. Exchange Rates")
+    print("6. Transaction History")
     print("=" * 40)
 
 
@@ -44,6 +59,8 @@ def deposit():
         data["balance"] += amount
         save_data(data)
 
+        add_transaction("Deposit", amount)
+        
         print(f"Updated Balance: ₹{data['balance']:.2f}")
 
     except ValueError:
@@ -66,6 +83,8 @@ def withdraw():
 
         data["balance"] -= amount
         save_data(data)
+
+        add_transaction("Withdraw", amount)
 
         print(f"Remaining Balance: ₹{data['balance']:.2f}")
 
@@ -94,3 +113,27 @@ def exchange_rate():
     except Exception:
 
         print("Unable to fetch exchange rates.")
+        
+def show_transactions():
+
+    data = load_data()
+
+    print("\n" + "=" * 55)
+    print("               TRANSACTION HISTORY")
+    print("=" * 55)
+
+    if len(data["transactions"]) == 0:
+        print("No transactions found.")
+        return
+
+    print(f"{'No.':<5}{'Date & Time':<22}{'Type':<15}{'Amount'}")
+    print("-" * 55)
+
+    for index, transaction in enumerate(data["transactions"], start=1):
+
+        print(
+            f"{index:<5}"
+            f"{transaction['time']:<22}"
+            f"{transaction['type']:<15}"
+            f"₹{transaction['amount']:.2f}"
+        )

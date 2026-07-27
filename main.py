@@ -1,5 +1,4 @@
 from atm import *
-from atm import show_menu, check_balance, deposit, withdraw
 
 
 def main():
@@ -25,7 +24,10 @@ def main():
             withdraw(current_user)
 
         elif choice == "4":
-            print("\nThank you for using our ATM!")
+            print("\n========================================")
+            print(" Thank you for using ATM Banking System ")
+            print("        Have a Great Day! 😊")
+            print("========================================")
             break
         
         elif choice == "5":

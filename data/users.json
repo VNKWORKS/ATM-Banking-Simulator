@@ -2,7 +2,7 @@
     "1001": {
         "name": "Naveen",
         "pin": "1234",
-        "balance": 1100.0,
+        "balance": 600.0,
         "transactions": [
             {
                 "type": "Deposit",
@@ -18,18 +18,63 @@
                 "type": "Transfer Sent",
                 "amount": 500.0,
                 "time": "27-07-2026 23:57:20"
+            },
+            {
+                "type": "Deposit",
+                "amount": 500.0,
+                "time": "28-07-2026 01:14:49"
+            },
+            {
+                "type": "Deposit",
+                "amount": 500.0,
+                "time": "28-07-2026 01:26:25"
+            },
+            {
+                "type": "Withdraw",
+                "amount": 500.0,
+                "time": "28-07-2026 01:26:31"
+            },
+            {
+                "type": "Transfer Sent",
+                "amount": 500.0,
+                "time": "28-07-2026 01:26:54"
+            },
+            {
+                "type": "Deposit",
+                "amount": 500.0,
+                "time": "28-07-2026 01:46:47"
+            },
+            {
+                "type": "Withdraw",
+                "amount": 500.0,
+                "time": "28-07-2026 01:47:29"
+            },
+            {
+                "type": "Transfer Sent",
+                "amount": 500.0,
+                "time": "28-07-2026 01:50:39"
             }
         ]
     },
     "1002": {
         "name": "Rahul",
         "pin": "4321",
-        "balance": 3000.0,
+        "balance": 4000.0,
         "transactions": [
             {
                 "type": "Transfer Received",
                 "amount": 500.0,
                 "time": "27-07-2026 23:57:20"
+            },
+            {
+                "type": "Transfer Received",
+                "amount": 500.0,
+                "time": "28-07-2026 01:26:54"
+            },
+            {
+                "type": "Transfer Received",
+                "amount": 500.0,
+                "time": "28-07-2026 01:50:39"
             }
         ]
     }

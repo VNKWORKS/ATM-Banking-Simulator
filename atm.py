@@ -15,7 +15,7 @@ def save_data(data):
         json.dump(data, file, indent=4)
 
 
-# ---------------- LOGIN ----------------
+# ---------------- LOGIN ---------------- #
 
 def login():
     users = load_data()
@@ -32,10 +32,11 @@ def login():
         return None
 
     print(f"\nWelcome {users[account]['name']}!")
+    print(f"Account Number : {account}")
     return account
 
 
-# ---------------- MENU ----------------
+# ---------------- MENU ---------------- #
 
 def show_menu():
     print("\n" + "=" * 40)
@@ -51,9 +52,17 @@ def show_menu():
     print("=" * 40)
 
 
-# ---------------- TRANSACTIONS ----------------
+# ---------------- BALANCE ---------------- #
+
+def check_balance(account):
+    data = load_data()
+    print(f"\nCurrent Balance: ₹{data[account]['balance']:.2f}")
+
+
+# ---------------- TRANSACTION ---------------- #
 
 def add_transaction(account, transaction_type, amount):
+
     data = load_data()
 
     transaction = {
@@ -67,17 +76,10 @@ def add_transaction(account, transaction_type, amount):
     save_data(data)
 
 
-# ---------------- BALANCE ----------------
-
-def check_balance(account):
-    data = load_data()
-
-    print(f"\nCurrent Balance: ₹{data[account]['balance']:.2f}")
-
-
-# ---------------- DEPOSIT ----------------
+# ---------------- DEPOSIT ---------------- #
 
 def deposit(account):
+
     data = load_data()
 
     try:
@@ -99,9 +101,10 @@ def deposit(account):
         print("Invalid amount!")
 
 
-# ---------------- WITHDRAW ----------------
+# ---------------- WITHDRAW ---------------- #
 
 def withdraw(account):
+
     data = load_data()
 
     try:
@@ -125,6 +128,9 @@ def withdraw(account):
 
     except ValueError:
         print("Invalid amount!")
+
+
+# ---------------- TRANSFER ---------------- #
 
 def transfer_money(account):
 
@@ -163,34 +169,12 @@ def transfer_money(account):
 
     except ValueError:
         print("Invalid amount!")
-        
-# ---------------- EXCHANGE RATE ----------------
-
-def exchange_rate():
-
-    url = "https://open.er-api.com/v6/latest/USD"
-
-    try:
-        response = requests.get(url)
-
-        data = response.json()
-
-        rates = data["rates"]
-
-        print("\nExchange Rates (Base Currency: USD)\n")
-
-        print(f"1 USD = ₹{rates['INR']:.2f}")
-        print(f"1 EUR = {rates['EUR']:.2f}")
-        print(f"1 GBP = {rates['GBP']:.2f}")
-        print(f"1 JPY = {rates['JPY']:.2f}")
-
-    except Exception:
-        print("Unable to fetch exchange rates.")
 
 
-# ---------------- HISTORY ----------------
+# ---------------- HISTORY ---------------- #
 
 def show_transactions(account):
+
     data = load_data()
 
     transactions = data[account]["transactions"]
@@ -199,17 +183,40 @@ def show_transactions(account):
     print("               TRANSACTION HISTORY")
     print("=" * 55)
 
-    if len(transactions) == 0:
+    if not transactions:
         print("No transactions found.")
         return
 
-    print(f"{'No.':<5}{'Date & Time':<22}{'Type':<15}{'Amount'}")
-    print("-" * 55)
+    print(f"{'No.':<5}{'Date & Time':<22}{'Type':<20}{'Amount'}")
+    print("-" * 65)
 
     for index, transaction in enumerate(transactions, start=1):
         print(
             f"{index:<5}"
             f"{transaction['time']:<22}"
-            f"{transaction['type']:<15}"
+            f"{transaction['type']:<20}"
             f"₹{transaction['amount']:.2f}"
         )
+
+
+# ---------------- EXCHANGE RATE ---------------- #
+
+def exchange_rate():
+
+    url = "https://open.er-api.com/v6/latest/USD"
+
+    try:
+
+        response = requests.get(url)
+
+        rates = response.json()["rates"]
+
+        print("\nExchange Rates (Base Currency: USD)\n")
+
+        print(f"1 USD = ₹{rates['INR']:.2f}")
+        print(f"1 EUR = {rates['EUR']:.2f}")
+        print(f"1 GBP = {rates['GBP']:.2f}")
+        print(f"1 JPY = {rates['JPY']:.2f}")
+
+    except:
+        print("Unable to fetch exchange rates.")

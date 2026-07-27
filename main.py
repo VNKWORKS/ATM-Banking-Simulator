@@ -4,20 +4,25 @@ from atm import show_menu, check_balance, deposit, withdraw
 
 def main():
 
+    current_user = login()
+
+    if current_user is None:
+        return
+    
     while True:
 
         show_menu()
 
-        choice = input("Enter your choice (1-6): ")
+        choice = input("Enter your choice (1-7): ")
 
         if choice == "1":
-            check_balance()
+            check_balance(current_user)
 
         elif choice == "2":
-            deposit()
+            deposit(current_user)
 
         elif choice == "3":
-            withdraw()
+            withdraw(current_user)
 
         elif choice == "4":
             print("\nThank you for using our ATM!")
@@ -27,7 +32,10 @@ def main():
             exchange_rate()
             
         elif choice == "6":
-            show_transactions()
+            show_transactions(current_user)
+            
+        elif choice == "7":
+            transfer_money(current_user)
 
         else:
             print("Invalid Choice!")

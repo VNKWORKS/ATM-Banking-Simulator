@@ -1,15 +1,36 @@
 {
-    "balance": 1600.0,
-    "transactions": [
-        {
-            "type": "Deposit",
-            "amount": 500.0,
-            "time": "27-07-2026 22:57:36"
-        },
-        {
-            "type": "Withdraw",
-            "amount": 200.0,
-            "time": "27-07-2026 22:58:24"
-        }
-    ]
+    "1001": {
+        "name": "Naveen",
+        "pin": "1234",
+        "balance": 1100.0,
+        "transactions": [
+            {
+                "type": "Deposit",
+                "amount": 200.0,
+                "time": "27-07-2026 23:51:24"
+            },
+            {
+                "type": "Withdraw",
+                "amount": 200.0,
+                "time": "27-07-2026 23:51:32"
+            },
+            {
+                "type": "Transfer Sent",
+                "amount": 500.0,
+                "time": "27-07-2026 23:57:20"
+            }
+        ]
+    },
+    "1002": {
+        "name": "Rahul",
+        "pin": "4321",
+        "balance": 3000.0,
+        "transactions": [
+            {
+                "type": "Transfer Received",
+                "amount": 500.0,
+                "time": "27-07-2026 23:57:20"
+            }
+        ]
+    }
 }
